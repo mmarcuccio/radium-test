@@ -1,6 +1,7 @@
 import React from "react";
 import Radium from "@instacart/radium";
 import { connect } from "react-redux";
+import HoC from "./HoC";
 
 class ClassComponent extends React.Component {
   state = {
@@ -28,7 +29,6 @@ const mapDispatchToProps = () => ({
   success: "yes",
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Radium(ClassComponent));
+export default HoC(
+  connect(mapStateToProps, mapDispatchToProps)(Radium(ClassComponent))
+);
